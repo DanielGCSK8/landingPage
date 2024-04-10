@@ -1,11 +1,11 @@
 /* page-top.component.scss */
 .page-top {
-    padding: 20px;
-    background-color: #ffffff;
+    padding: 50px;
   }
   
   .logo img {
     height: 40px;
+    margin-top: 12px;
   }
   
   .menu ul {
