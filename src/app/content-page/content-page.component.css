@@ -6,7 +6,7 @@
 }
 
 .h2 {
-    font-size: 2em;
+    font-size: 3em;
     margin-top: 0;
     font-weight: bold;
 }
@@ -41,5 +41,11 @@ img {
    font-size:18px;
   }
   
+  .img-travel {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: rgb(24, 192, 192) !important;
+    border-radius: 15px 15px 1px 1px !important;
+  }
 
   
