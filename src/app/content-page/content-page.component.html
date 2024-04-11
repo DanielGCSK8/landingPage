@@ -1,9 +1,12 @@
 <div class style="padding: 50px;">
    <div class="d-flex">
       <div class="mt-5">
-         <p class="h1 main-color mb-4">Vuelve a volar en cielos claros y sin
+         <p
+            [class]="darkMode ? 'h1 text-white mb-4' : 'h1 main-color mb-4'">Vuelve
+            a volar en cielos claros y sin
             turbulencias</p>
-         <p class="main-color mb-4" style="font-weight: bold;">CONOCE MÁS SOBRE
+         <p [class]="darkMode ? 'text-white mb-4' : 'main-color mb-4'"
+            style="font-weight: bold;">CONOCE MÁS SOBRE
             NUESTRAS POLÍTICAS PENSADAS PARA TI</p>
          <button type="button" class="btn btn-warning text-white"
             style="font-weight: normal;">Conoce más aquí</button>
@@ -11,83 +14,150 @@
       <img src="assets/traveler.png" alt="Travel" class="img-fluid">
    </div>
 
-   <div class="d-flex justify-content-center">
+   <div class="d-flex justify-content-center flex-md-nowrap flex-wrap mt-3">
       <div>
-         <p class="fw-bold text-muted">Testimonios</p>
-         <p class="h2 main-color">Comentarios de otros viajeros</p>
+         <p [class]="darkMode ? 'fw-bold text-white' : 'fw-bold text-muted'">Testimonios</p>
+         <p [class]="darkMode ? 'h2 text-white' : 'h2 main-color'">Comentarios de otros viajeros</p>
       </div>
-      <div class="position-relative">
-         @if(!status) {
+      <div class="d-flex">
+         <div class="position-relative">
+            @if(!status) {
             <img class="img-traveler" src="assets/persona.png" width="80px" />
-         } @else {
-            <img class="img-traveler" src="assets/persona2.jpg" width="80px" style="height: 80px;"/>
-         }
-         
-         <div class="comentario m-5" style="background-color: #ffff;">
-            <p>"Necesitaba cambiar las fechas de mi viaje,
-               me comuniqué con Satena y fue fácil y rápido hacerlo.
-               El mejor servicio al cliente que he usado"
-            </p>
-            <div>
-               @if(!status) {
-               <p>Erick Padilla</p>
-               <p>Medellín → Caracas</p>
-               } @else {
-               <p>Andrés Guzman</p>
-               <p>Bogotá → Nuquí</p>
-               }
-            </div>
-         </div>
-         <div class="comentario my-5 ms-5 prb" style="z-index: -2;">
-            <p>"Necesitaba cambiar las fechas de mi viaje,
-               me comuniqué con Satena y fue fácil y rápido hacerlo.
-               El mejor servicio al cliente que he usado"
-            </p>
-            <div class="mt-5">
-               @if(status) {
-               <p>Erick Padilla</p>
-               <p>Medellín → Caracas</p>
-               } @else {
+            } @else {
+            <img class="img-traveler" src="assets/persona2.jpg" width="80px"
+               style="height: 80px;" />
+            }
 
-               <p>Andrés Guzman</p>
-               <p>Bogotá → Nuquí</p>
-               }
+            <div class="comentario m-5" [style.background-color]="darkMode ? '#181E4B' : '#ffff'">
+               <p>"Necesitaba cambiar las fechas de mi viaje,
+                  me comuniqué con Satena y fue fácil y rápido hacerlo.
+                  El mejor servicio al cliente que he usado"
+               </p>
+               <div>
+                  @if(!status) {
+                  <p>Erick Padilla</p>
+                  <p>Medellín → Caracas</p>
+                  } @else {
+                  <p>Andrés Guzman</p>
+                  <p>Bogotá → Nuquí</p>
+                  }
+               </div>
+            </div>
+            <div class="comentario my-5 ms-5 prb" style="z-index: -2;">
+               <p>"Necesitaba cambiar las fechas de mi viaje,
+                  me comuniqué con Satena y fue fácil y rápido hacerlo.
+                  El mejor servicio al cliente que he usado"
+               </p>
+               <div class="mt-5">
+                  @if(status) {
+                  <p >Erick Padilla</p>
+                  <p>Medellín → Caracas</p>
+                  } @else {
+
+                  <p>Andrés Guzman</p>
+                  <p>Bogotá → Nuquí</p>
+                  }
+               </div>
             </div>
          </div>
-      </div>
-      <div class="d-flex flex-column justify-content-center">
-         <a type="button" (click)="changeDescription()"><i
-               class="fa fa-angle-up"></i></a>
-         <a type="button" (click)="changeDescription()" class="mt-4"><i
-               class="fa fa-angle-down"></i></a>
+         <div class="d-flex flex-column justify-content-center">
+            <a type="button" (click)="changeDescription()"><i
+                  class="fa fa-angle-up"></i></a>
+            <a type="button" (click)="changeDescription()" class="mt-4"><i
+                  class="fa fa-angle-down"></i></a>
+         </div>
       </div>
    </div>
 
    <div class="d-flex justify-content-center" style="margin-top: 120px;">
       <div>
          <p class="text-center" style="font-weight: bold;">Mas vendidos</p>
-         <p class="h2 main-color">Comentarios de otros viajeros</p>
+         <p [class]="darkMode ? 'h2 text-white' : 'h2 main-color'">Destinos favoritos</p>
       </div>
    </div>
-   <div class="d-flex justify-content-between p-5">
+   <div class="row row-cols-1 row-cols-md-3 g-4">
       @for (item of destinos; track item.id) {
-      <div class="card" style="width: 18rem;">
-         <img src={{item.img}} class="card-img-top" alt="travels">
-         <div class="card-body">
-            <h5 class="card-title">{{item.nombre}}</h5>
-            <p class="card-text">${{item.precio}}</p>
-            <p class="card-text"><small class="text-muted">5 nov - 13
-                  dic</small></p>
+      <div class="col">
+         <div class="card mb-3">
+            <img src={{item.img}} class="card-img-top" alt="travels">
+            <div class="card-body">
+               <h5 class="card-title">{{item.nombre}}</h5>
+               <p class="card-text">${{item.precio}}</p>
+               <p class="card-text"><small class="text-muted">5 nov - 13
+                     dic</small></p>
+            </div>
          </div>
       </div>
+
       }
    </div>
 
-   <div>
-      <div class="text-center">
-         <p class="text-center text-muted" style="font-weight: bold;">Vuelos</p>
-         <p class="h2 main-color">Comentarios de otros viajeros</p>
-      </div>
+   <div class="text-center">
+      <p class="text-center text-muted" style="font-weight: bold;">Vuelos</p>
+      <p class="h2 main-color">Busca tu vuelo</p>
+   </div>
+   <div class="container">
+      <form>
+         <div class="d-flex mb-4">
+            <div class="form-check">
+               <input class="form-check-input text-dark" type="radio"
+                  name="flightType">
+               <label class="form-check-label" for="oneWay">Solo ida</label>
+            </div>
+            <div class="form-check">
+               <input class="form-check-input ms-1" type="radio"
+                  name="flightType">
+               <label class="form-check-label" for="roundTrip">Ida y
+                  regreso</label>
+            </div>
+         </div>
+
+         <div class="row w-100">
+            <div class="col-12 col-md-6 mb-4">
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white' : 'text-muted'" from="from">Desde</label>
+                  <input class="form-control" type="text">
+               </div>
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white mt-3' : 'text-muted mt-3'" from="from">Ida</label>
+                  <input class="form-control" type="date">
+               </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white' : 'text-muted'" from="from">Hacia</label>
+                  <input class="form-control" type="text">
+               </div>
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white mt-3' : 'text-muted mt-3'" from="from">Regreso</label>
+                  <input class="form-control" type="date">
+               </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white' : 'text-muted'" from="from">Número de
+                     pasajeros</label>
+                  <input class="form-control" type="number" min="0">
+               </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+               <div class="form-group">
+                  <label [class]="darkMode ? 'text-white' : 'text-muted'" from="from">Categoría</label>
+                  <select class="form-control" id="category">
+                     <option>Económica</option>
+                     <option>Primera clase</option>
+                     <option>Otra</option>
+                  </select>
+               </div>
+            </div>
+         </div>
+         <div class="text-center">
+            <button type="button"
+               class="btn btn-warning text-white fw-normal"
+               style="width: 20%;">Buscar</button>
+         </div>
+
+      </form>
    </div>
 
 </div>

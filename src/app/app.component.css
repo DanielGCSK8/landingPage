@@ -4,3 +4,10 @@ right: 0px;
 top: 0px;
 z-index: -1;
 }
+
+.dark-mode {
+    background-color: #181E4B;
+    color: #fff;
+    /* Otros estilos específicos para el modo oscuro */
+  }
+  

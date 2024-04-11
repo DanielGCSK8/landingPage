@@ -1,5 +1,12 @@
+<div [class.dark-mode]="darkStatus">
+    <!-- Contenido de tu aplicación -->
 
-<img class="img-top" src="assets/Decore.png" />
-<app-page-top />
-<app-content-page />
-
+    <img class="img-top" src="assets/Decore.png" />
+    <app-page-top
+    (isDarkMode)="getDarkMode($event)"
+     />
+    <app-content-page
+    [darkMode]="darkStatus"
+    />
+    <app-footer-page />
+</div>
